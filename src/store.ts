@@ -1,8 +1,9 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { createLogger } from "redux-logger";
-import rootReducer from "./modules";
 import { batchedSubscribe } from "redux-batched-subscribe";
 import { debounce } from "lodash";
+import todo from "./modules/todo";
+import auth from "./modules/auth";
 
 const middlewares = [createLogger()];
 
@@ -13,7 +14,10 @@ const persistedState = localStorage.getItem("reduxState")
 const debounceNotify = debounce((notify) => notify());
 
 const store = configureStore({
-  reducer: rootReducer,
+  reducer: {
+    todo,
+    auth,
+  },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(middlewares),
   devTools: process.env.NODE_ENV !== "production",
