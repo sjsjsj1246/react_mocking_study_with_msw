@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
+    "baseUrl": "src",
     "target": "es5",
     "lib": [
       "dom",
       "dom.iterable",
-      "esnext"
+      "esnext",
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -19,9 +20,45 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "jsxImportSource": "@emotion/react"
+    "jsxImportSource": "@emotion/react",
+    "paths": {
+      "@pages/*": [
+        "pages/*"
+      ],
+      "@pages": [
+        "pages"
+      ],
+      "@components/*": [
+        "components/*"
+      ],
+      "@components": [
+        "components"
+      ],
+      "@server/*": [
+        "server/*"
+      ],
+      "@server": [
+        "server"
+      ],
+      "@modules/*": [
+        "modules/*"
+      ],
+      "@modules": [
+        "modules"
+      ],
+      "@apis/*": [
+        "apis/*"
+      ],
+      "@apis": [
+        "apis"
+      ],
+    }
   },
   "include": [
-    "src"
-  ]
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+  ],
 }
