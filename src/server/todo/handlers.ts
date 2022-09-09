@@ -1,4 +1,13 @@
 import { rest } from "msw";
-import { getTodoList } from "./service";
+import * as todoService from "./service";
 
-export default [rest.get("/api/todos", getTodoList)];
+const todoHandler = [
+  rest.get("/api/todos", todoService.getTodoList),
+  rest.get("/api/todos/:id", todoService.getTodo),
+  rest.post("/api/todos/:id", todoService.createTodo),
+  rest.patch("/api/todos/:id", todoService.updateTodo),
+  rest.delete("/api/todos/:id", todoService.deleteTodo),
+  rest.patch("/api/todos/:id", todoService.togleTodo),
+];
+
+export default todoHandler;

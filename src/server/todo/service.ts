@@ -26,3 +26,32 @@ export const getTodoList: Parameters<typeof rest.get>[1] = (req, res, ctx) => {
     ])
   );
 };
+
+export const getTodo: Parameters<typeof rest.get>[1] = (req, res, ctx) => {
+  return res(
+    ctx.status(200),
+    ctx.delay(500),
+    ctx.json({
+      id: req.params.id,
+      content: "테스트",
+      isCompleted: false,
+      publishedDate: "2022-08-12T11:47:34.799Z",
+    })
+  );
+};
+
+export const createTodo: Parameters<typeof rest.get>[1] = (req, res, ctx) => {
+  return res(ctx.status(200), ctx.delay(500), ctx.json(null));
+};
+
+export const deleteTodo: Parameters<typeof rest.get>[1] = (req, res, ctx) => {
+  return res(ctx.status(200), ctx.delay(500), ctx.json(null));
+};
+
+export const updateTodo: Parameters<typeof rest.get>[1] = (req, res, ctx) => {
+  return res(ctx.status(200), ctx.delay(500), ctx.json(null));
+};
+
+export const togleTodo: Parameters<typeof rest.get>[1] = (req, res, ctx) => {
+  return res(ctx.status(200), ctx.delay(500), ctx.json(null));
+};

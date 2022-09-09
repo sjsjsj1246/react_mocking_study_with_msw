@@ -1,5 +1,5 @@
 import { setupWorker } from "msw";
-import { auth } from "./auth";
-import { todo } from "./todo";
+import authHandler from "./auth/handlers";
+import todoHandler from "./todo/handlers";
 
-export const serviceWorker = setupWorker(...todo, ...auth);
+export const serviceWorker = setupWorker(...todoHandler, ...authHandler);
