@@ -40,18 +40,22 @@ export const getTodo: Parameters<typeof rest.get>[1] = (req, res, ctx) => {
   );
 };
 
-export const createTodo: Parameters<typeof rest.get>[1] = (req, res, ctx) => {
+export const createTodo: Parameters<typeof rest.post>[1] = (req, res, ctx) => {
   return res(ctx.status(200), ctx.delay(500), ctx.json(null));
 };
 
-export const deleteTodo: Parameters<typeof rest.get>[1] = (req, res, ctx) => {
+export const deleteTodo: Parameters<typeof rest.delete>[1] = (
+  req,
+  res,
+  ctx
+) => {
   return res(ctx.status(200), ctx.delay(500), ctx.json(null));
 };
 
-export const updateTodo: Parameters<typeof rest.get>[1] = (req, res, ctx) => {
+export const updateTodo: Parameters<typeof rest.patch>[1] = (req, res, ctx) => {
   return res(ctx.status(200), ctx.delay(500), ctx.json(null));
 };
 
-export const toggleTodo: Parameters<typeof rest.get>[1] = (req, res, ctx) => {
+export const toggleTodo: Parameters<typeof rest.patch>[1] = (req, res, ctx) => {
   return res(ctx.status(200), ctx.delay(500), ctx.json(null));
 };

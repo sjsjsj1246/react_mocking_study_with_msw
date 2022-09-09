@@ -1,13 +1,13 @@
 import { Route, Routes as ReactRouterRoutes } from "react-router-dom";
-import { StartPage } from "./StartPage";
+import LoginPage from "./LoginPage";
+import TodoPage from "./TodoPage";
 
 export const Routes = () => {
   return (
     <ReactRouterRoutes>
-      <Route path="/" element={<StartPage />} />
-      {/* <Route path="/login" element={LoginPage} />
-      <Route path="/signup" element={SignupPage} />
-      <Route path="/todo" element={TodoPage} /> */}
+      <Route index element={<LoginPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/todo" element={<TodoPage />} />
     </ReactRouterRoutes>
   );
 };

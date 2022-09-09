@@ -11,7 +11,7 @@
 | ------------- | ------ | ---------------------- | ------ | ------------------------------------ | -------- |
 | 회원가입      | Auth   | /api/auth/register     | POST   | {username: string, password: string} | User     |
 | 로그인        | Auth   | /api/auth/login        | POST   | {username: string, password: string} | User     |
-| 로그인 확인   | Auth   | /api/auth/check        | POST   | null                                 | User     |
+| 로그인 확인   | Auth   | /api/auth/check        | GET    | null                                 | User     |
 | 로그아웃      | Auth   | /api/auth/logout       | POST   | null                                 | null     |
 | 투두 추가     | Todo   | /api/todos             | POST   | {content: string}                    | Todo     |
 | 투두목록 조회 | Todo   | /api/todos             | GET    | null                                 | Todo[]   |

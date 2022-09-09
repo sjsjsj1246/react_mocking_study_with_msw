@@ -22,7 +22,7 @@ export const signup: Parameters<typeof rest.get>[1] = (req, res, ctx) => {
   );
 };
 
-export const login: Parameters<typeof rest.get>[1] = (req, res, ctx) => {
+export const login: Parameters<typeof rest.post>[1] = (req, res, ctx) => {
   return res(
     ctx.status(200),
     ctx.delay(500),
@@ -33,6 +33,6 @@ export const login: Parameters<typeof rest.get>[1] = (req, res, ctx) => {
   );
 };
 
-export const logout: Parameters<typeof rest.get>[1] = (req, res, ctx) => {
+export const logout: Parameters<typeof rest.post>[1] = (req, res, ctx) => {
   return res(ctx.status(200), ctx.delay(500), ctx.json(null));
 };
