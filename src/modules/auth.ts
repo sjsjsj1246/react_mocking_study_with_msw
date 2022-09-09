@@ -3,11 +3,28 @@ import * as AuthAPI from "@apis/auth";
 
 const name = "auth";
 export interface User {
+  id: string;
   username: string;
 }
 
-export const check = createAsyncThunk<User>(`${name}/getTodoList`, async () => {
+export const check = createAsyncThunk<User>(`${name}/check`, async () => {
   const response = await AuthAPI.check();
+  return response;
+});
+
+export const login = createAsyncThunk<
+  User,
+  { username: string; password: string }
+>(`${name}/login`, async ({ username, password }) => {
+  const response = await AuthAPI.login(username, password);
+  return response;
+});
+
+export const register = createAsyncThunk<
+  User,
+  { username: string; password: string }
+>(`${name}/register`, async ({ username, password }) => {
+  const response = await AuthAPI.register(username, password);
   return response;
 });
 
@@ -21,6 +38,12 @@ export default createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    builder.addCase(register.fulfilled, (state, { payload }) => {
+      state.user = payload;
+    });
+    builder.addCase(login.fulfilled, (state, { payload }) => {
+      state.user = payload;
+    });
     builder.addCase(check.fulfilled, (state, { payload }) => {
       state.user = payload;
     });

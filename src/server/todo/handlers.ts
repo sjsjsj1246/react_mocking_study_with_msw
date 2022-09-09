@@ -7,7 +7,7 @@ const todoHandler = [
   rest.post("/api/todos/:id", todoService.createTodo),
   rest.patch("/api/todos/:id", todoService.updateTodo),
   rest.delete("/api/todos/:id", todoService.deleteTodo),
-  rest.patch("/api/todos/:id", todoService.togleTodo),
+  rest.patch("/api/todos/:id", todoService.toggleTodo),
 ];
 
 export default todoHandler;

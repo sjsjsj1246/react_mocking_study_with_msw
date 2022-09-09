@@ -13,9 +13,11 @@ if (process.env.REACT_APP_PRODUCTION_MODE === "development") {
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
-axios.defaults.baseURL = process.env.REACT_APP_PRODUCTION_MODE
-  ? process.env.REACT_APP_PRODUCTION_API_URL
-  : process.env.REACT_APP_DEVELOPMENT_API_URL;
+
+axios.defaults.baseURL =
+  process.env.REACT_APP_PRODUCTION_MODE === "development"
+    ? process.env.REACT_APP_DEVELOPMENT_API_URL
+    : process.env.REACT_APP_PRODUCTION_API_URL;
 
 root.render(
   <Provider store={store}>
