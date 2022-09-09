@@ -1,5 +1,5 @@
 import axios from "axios";
-import { User } from "../modules/auth";
+import { User } from "@modules/auth";
 
 export const register = async (username: string, password: string) =>
   (await axios.post<User>("/api/auth/register", { username, password })).data;

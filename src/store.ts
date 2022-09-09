@@ -1,9 +1,10 @@
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import { createLogger } from "redux-logger";
 import { batchedSubscribe } from "redux-batched-subscribe";
 import { debounce } from "lodash";
 import todo from "./modules/todo";
 import auth from "./modules/auth";
+import { useDispatch } from "react-redux";
 
 const middlewares = [createLogger()];
 
@@ -29,5 +30,6 @@ store.subscribe(() => {
   localStorage.setItem("reduxState", JSON.stringify(store.getState()));
 });
 
+export const useAppDispatch = () => useDispatch<typeof store.dispatch>();
 export type RootState = ReturnType<typeof store.getState>;
 export default store;

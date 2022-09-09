@@ -1,11 +1,11 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
-import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import store from "./store";
-import { serviceWorker } from "./server";
+import axios from "axios";
+import App from "App";
+import { serviceWorker } from "server";
+import store from "store";
+import "index.css";
 
 if (process.env.REACT_APP_PRODUCTION_MODE === "development") {
   serviceWorker.start({ onUnhandledRequest: "bypass" });
@@ -13,6 +13,9 @@ if (process.env.REACT_APP_PRODUCTION_MODE === "development") {
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+axios.defaults.baseURL = process.env.REACT_APP_PRODUCTION_MODE
+  ? process.env.REACT_APP_PRODUCTION_API_URL
+  : process.env.REACT_APP_DEVELOPMENT_API_URL;
 
 root.render(
   <Provider store={store}>

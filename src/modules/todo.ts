@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import * as todoAPI from "../apis/todo";
+import * as todoAPI from "@apis/todo";
 
 const name = "todo";
 export interface Todo {

@@ -1,12 +1,10 @@
-import { css } from "@emotion/react";
-import { useDispatch } from "react-redux";
-import { check } from "../modules/auth";
-import { getTodoList } from "../modules/todo";
+import { check } from "@modules/auth";
+import { useAppDispatch } from "store";
 import { useInternalRouter } from "./routing";
 
 export const StartPage = () => {
   const { push } = useInternalRouter();
-  const dispatch = useDispatch<any>();
+  const dispatch = useAppDispatch();
 
   return (
     <>
