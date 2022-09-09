@@ -1,46 +1,37 @@
-# Getting Started with Create React App
+# MSW 스터디
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Skills
 
-## Available Scripts
+- msw
+- Redux Toolkit
 
-In the project directory, you can run:
+## Mocking Apis
 
-### `npm start`
+| 구분          | 도메인 | uri                 | method | body                                 | response |
+| ------------- | ------ | ------------------- | ------ | ------------------------------------ | -------- |
+| 회원가입      | Auth   | /api/auth/register  | POST   | {username: string, password: string} | User     |
+| 로그인        | Auth   | /api/auth/login     | POST   | {username: string, password: string} | User     |
+| 로그인 확인   | Auth   | /api/auth/check     | POST   | null                                 | User     |
+| 로그아웃      | Auth   | /api/auth/logout    | POST   | null                                 | null     |
+| 투두 추가     | Todo   | /api/auth/todos     | POST   | {content: string}                    | Todo     |
+| 투두목록 조회 | Todo   | /api/auth/todos     | GET    | null                                 | Todo[]   |
+| 투두 조회     | Todo   | /api/auth/todos/:id | GET    | null                                 | Todo     |
+| 투두 수정     | Todo   | /api/auth/todos/:id | PATCH  | {content: string}                    | Todo     |
+| 투두 삭제     | Todo   | /api/auth/todos/:id | DELETE | null                                 | null     |
+| 투두 토글     | Todo   | /api/auth/todos/:id | PATCH  | null                                 | Todo     |
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Response Type
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```ts
+type User = {
+  id: string;
+  username: string;
+};
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+type Todo = {
+  id: string;
+  content: string;
+  isCompleted: boolean;
+  publishedDate: Date;
+};
+```
