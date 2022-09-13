@@ -41,11 +41,20 @@ export default createSlice({
     builder.addCase(register.fulfilled, (state, { payload }) => {
       state.user = payload;
     });
+    builder.addCase(register.rejected, (state) => {
+      state.user = null;
+    });
     builder.addCase(login.fulfilled, (state, { payload }) => {
       state.user = payload;
     });
+    builder.addCase(login.rejected, (state) => {
+      state.user = null;
+    });
     builder.addCase(check.fulfilled, (state, { payload }) => {
       state.user = payload;
+    });
+    builder.addCase(check.rejected, (state) => {
+      state.user = null;
     });
   },
 }).reducer;

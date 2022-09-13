@@ -3,14 +3,24 @@ import * as todoAPI from "@apis/todo";
 
 const name = "todo";
 export interface Todo {
-  id: string;
+  id: number;
   content: string;
+  isCompleted: boolean;
   publishedDate: Date;
 }
 
 export const getTodoList = createAsyncThunk<Todo[]>(
   `${name}/getTodoList`,
   async () => {
+    const response = await todoAPI.getTodoList();
+    return response;
+  }
+);
+
+export const createTodo = createAsyncThunk<Todo[], { content: string }>(
+  `${name}/createTodo`,
+  async ({ content }) => {
+    await todoAPI.createTodot(content);
     const response = await todoAPI.getTodoList();
     return response;
   }
@@ -33,14 +43,14 @@ export const deleteTodo = createAsyncThunk<Todo[], { id: number }>(
   }
 );
 
-export const editTodo = createAsyncThunk<Todo[], { id: number }>(
-  `${name}/editTodo`,
-  async ({ id }) => {
-    await todoAPI.editTodo(id);
-    const response = await todoAPI.getTodoList();
-    return response;
-  }
-);
+export const editTodo = createAsyncThunk<
+  Todo[],
+  { id: number; content: string }
+>(`${name}/editTodo`, async ({ id, content }) => {
+  await todoAPI.editTodo(id, content);
+  const response = await todoAPI.getTodoList();
+  return response;
+});
 
 export const toggleTodo = createAsyncThunk<Todo[], { id: number }>(
   `${name}/toggleTodo`,
@@ -75,6 +85,9 @@ export default createSlice({
       state.todoList = payload;
     });
     builder.addCase(toggleTodo.fulfilled, (state, { payload }) => {
+      state.todoList = payload;
+    });
+    builder.addCase(createTodo.fulfilled, (state, { payload }) => {
       state.todoList = payload;
     });
   },

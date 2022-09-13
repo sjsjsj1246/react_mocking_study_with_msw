@@ -21,9 +21,11 @@ const LoginPage = () => {
 
   const onLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const result = await dispatch(login(formData)).unwrap();
-    if (result.username) {
+    try {
+      await dispatch(login(formData)).unwrap();
       router.push("/todo");
+    } catch (err) {
+      alert("로그인에 실패했습니다.");
     }
   };
 
