@@ -7,17 +7,12 @@ import { serviceWorker } from "server";
 import store from "store";
 import "index.css";
 
-if (process.env.REACT_APP_PRODUCTION_MODE === "development") {
-  serviceWorker.start({ onUnhandledRequest: "bypass" });
-}
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
-axios.defaults.baseURL =
-  process.env.REACT_APP_PRODUCTION_MODE === "development"
-    ? process.env.REACT_APP_DEVELOPMENT_API_URL
-    : process.env.REACT_APP_PRODUCTION_API_URL;
+serviceWorker.start({ onUnhandledRequest: "bypass" });
+axios.defaults.baseURL = "/api";
 
 root.render(
   <Provider store={store}>

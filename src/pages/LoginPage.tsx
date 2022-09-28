@@ -32,25 +32,25 @@ const LoginPage = () => {
   return (
     <Wrapper>
       <Side></Side>
-      <LoginSection>
+      <Section>
         <LoginForm onSubmit={onLogin}>
+          <label>아이디</label>
           <input
             name="username"
             type="text"
-            placeholder="아이디"
             value={formData.username}
             onChange={handleInputCahnge}
           />
+          <label>비밀번호</label>
           <input
             name="password"
             type="password"
-            placeholder="비밀번호"
             value={formData.password}
             onChange={handleInputCahnge}
           />
           <button type="submit">로그인</button>
         </LoginForm>
-      </LoginSection>
+      </Section>
     </Wrapper>
   );
 };
@@ -63,15 +63,57 @@ const Wrapper = styled.div`
 
 const Side = styled.aside`
   flex: 1;
+  background-image: url("https://source.unsplash.com/600x800");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const Section = styled.section`
+  width: 500px;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const LoginForm = styled.form`
+  width: 240px;
   display: flex;
-`;
+  flex-direction: column;
 
-const LoginSection = styled.section`
-  flex: 1;
-  ${LoginForm} {
+  input {
+    height: 30px;
+    border: 1px solid #c1c1c1;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+
+  label {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: #363636;
+  }
+
+  button {
+    height: 40px;
+    margin-top: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4e69ef;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: bold;
+
+    :hover {
+      cursor: pointer;
+      background-color: #465fd9;
+    }
   }
 `;
 

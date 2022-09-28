@@ -113,7 +113,7 @@ const AddButton = styled.button<{ isAddMode: boolean }>`
   height: 3rem;
   border-radius: 50%;
   border: none;
-  background-color: #8ec18c;
+  background-color: #4e69ef;
   color: white;
   font-size: 2.2rem;
   transition: all 0.2s ease;
@@ -133,12 +133,19 @@ const AddTodoForm = styled.div`
   input {
     flex: 1;
     border: 1px solid #d3d3d3;
+    border-radius: 5px 0 0 5px;
   }
 
   button {
     width: 5rem;
     border: none;
-    background-color: #8ec18c;
+    background-color: #4e69ef;
     color: white;
+    border-radius: 0 5px 5px 0;
+
+    :hover {
+      cursor: pointer;
+      background-color: #465fd9;
+    }
   }
 `;
